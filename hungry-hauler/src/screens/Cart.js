@@ -19,7 +19,7 @@ export default function Cart() {
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
     // console.log(data,localStorage.getItem("userEmail"),new Date())
-    let response = await fetch("http://localhost:5000/api/orderData", {
+    let response = await fetch("http://localhost:5000/api/auth/orderData", {
       // credentials: 'include',
       // Origin:"http://localhost:3000/login",
       method: "POST",
@@ -40,12 +40,12 @@ export default function Cart() {
 
   let totalPrice = data.reduce((total, food) => total + food.price, 0);
   return (
-    <div>
+    <div >
       {console.log(data)}
       <div className="container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md">
         <table className="table table-hover ">
-          <thead className=" text-white fs-4">
-            <tr>
+          <thead className="fs-4 ">
+            <tr >
               <th scope='col' >#</th>
               <th scope='col' >Name</th>
               <th scope='col' >Quantity</th>
@@ -64,7 +64,7 @@ export default function Cart() {
                 <td>{food.size}</td>
                 <td>{food.price}</td>
                 <td>
-                  <button type="button" className="btn p-0">
+                  <button type="button" className="btn p-0 ">
                     <Delete
                       onClick={() => {
                         dispatch({ type: "REMOVE", index: index });
